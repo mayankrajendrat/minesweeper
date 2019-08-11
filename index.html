@@ -5,12 +5,17 @@
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.7/css/mdb.min.css" rel="stylesheet">
     <style type="text/css">
       body {
-        font-family: AppleColorEmoji;
         font-size: 15px;
         text-align: center;
-        padding: 20px 0;
+        padding: 0px 0;
       }
 
       span, input, a, div, button {
@@ -263,7 +268,24 @@
       }
     </style>
   </head>
-  <body>
+  <body class="grey lighten-5">
+<!-- As a heading --> 
+<nav class="navbar navbar-light blue lighten-4">
+    <span class="navbar-brand">MineSweeper</span>
+    <a class="navbar-brand text-left" href="https://github.com/mayankrajendrat/minesweeper"><i class="fas fa-info-circle"></i></span>
+  </nav>
+
+<main>
+  <div class="container-fluid mt-2">
+    <section>
+        <div class="row">
+
+          </div>
+    </section>
+  </div>
+</main>
+
+    
     <div class="wrapper">
       <button type="button" class="settings js-settings" aria-haspopup="true" aria-expanded="false" aria-label="Settings"></button>
       <div class="js-settings-popup settings-popup">
@@ -299,13 +321,18 @@
         <div class="stat flex-cell"><div id="timer"></div><span class="small-text">TIME</span></div>
       </div>
     </div>
-    <a href="https://github.com/muan/emoji-minesweeper" class="link-to-github">[Code]</a>
-    <div aria-live="assertive" class="feedback"></div>
 
     <!-- haiiii https://github.com/twitter/twemoji is awesome -->
     <script src="twemoji.js"></script>
     <script src="game.js"></script>
-
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.7/js/mdb.min.js"></script>
     <script>
       var emojiset = document.getElementById('emojiset').value.split(' ')
       var cols = document.getElementById('cols')
