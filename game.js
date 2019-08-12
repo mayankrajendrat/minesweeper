@@ -15,9 +15,12 @@ var Game = function (cols, rows, number_of_bombs, set, usetwemoji) {
   this.numbermoji = [this.emojiset[0]].concat(numbers)
   this.usetwemoji = usetwemoji || false
 
-  this.init()
+  this.init();
+  this.startIntro();
 }
-
+Game.prototype.startIntro=function (){
+  introJs().start();
+}
 Game.prototype.init = function () {
   this.prepareEmoji()
 

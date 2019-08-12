@@ -11,6 +11,9 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 <!-- Material Design Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.7/css/mdb.min.css" rel="stylesheet">
+<!--Intro JS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/introjs.css" rel="stylesheet">
+
     <style type="text/css">
       body {
         font-size: 15px;
@@ -21,11 +24,7 @@
       span, input, a, div, button {
         box-sizing: border-box;
       }
-      .card-1 {
-  padding: 10px 10px 10px 10px;
-  float: none;
-  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
-}
+
       .btn, .input {
         padding: 12px 15px;
         font-size: 0.65em;
@@ -318,7 +317,7 @@
               <div class="col-12">
                   <ul class="list-inline float-center my-0 py-1 pr-3">
                       <li class="list-inline-item">
-                          <button type="button" class="action-btn js-new-game btn btn-default btn-lg btn-block" aria-label="New game">
+                          <button type="button" class="action-btn js-new-game btn btn-default btn-lg btn-block" aria-label="New game" data-intro='Reset Game!' data-step=1>
                               <span class="default-emoji"></span>
                               <span id="result" class="result-emoji"></span>
                             </button>
@@ -333,8 +332,8 @@
             <nav class="navbar navbar-expand-lg navbar-dark grey lighten-5 d-flex justify-content-between z-depth-1-bottom">
           
                 <div>
-                  <ul class="list-inline my-2 py-1 dark-grey-text">
-                    <li class="list-inline-item">
+                  <ul class="list-inline my-2 py-1 dark-grey-text" data-intro='Game Timer' data-step=2>
+                    <li class="list-inline-item" >
                       <i class="fas fa-clock"></i>
                     </li>
                     <li class="list-inline-item font-weight-bold text-uppercase">
@@ -345,16 +344,16 @@
           
                 <div>
                   <ul class="list-inline my-2 py-1 dark-grey-text">
-                    <li class="list-inline-item">
+                    <li class="list-inline-item" data-intro='Number of hidden Bombs available in game' data-step=3>
                       <i class="fas fa-bomb" aria-hidden="true"></i>
                       <span id="bombs-left">0</span>
                     </li>
-                    <li class="list-inline-item">
+                    <li class="list-inline-item" data-intro='Number of moves taken by player' data-step=4>
                       <i class="fas fa-arrows-alt" aria-hidden="true"></i>
                       <span id="moves"></span><span> Move(s)</span>
                     </li>
                     <li class="list-inline-item">
-                        <button type="button" class="settings js-settings" aria-haspopup="true" aria-expanded="false" aria-label="Settings">
+                        <button type="button" class="settings js-settings" aria-haspopup="true" aria-expanded="false" aria-label="Settings" data-intro='Customize game settings based on preference.' data-step=5>
                             <i class="fas fa-cogs"></i>
                         </button>
                       </li>
@@ -370,7 +369,7 @@
               <div class="row">
           
                <div class="col-12 p-1">
-                  <div id="map" role="grid" aria-label="Mine field">
+                  <div id="map" role="grid" aria-label="Mine field" data-intro='Mine Field' data-step=6>
                     </div>
                     <div class="js-settings-popup settings-popup">
                         <div class="flex">
@@ -401,7 +400,7 @@
           
             </div>
             <!-- Card footer -->
-    <div class="card-footer text-muted text-center mt-4">
+    <div class="card-footer text-muted text-center mt-4" data-intro='Field information based on player moves.' data-step=7>
         <div aria-live="assertive"><i class="fas fa-info-circle"></i> <span class="feedback"></span> </div>
     </div>
           </div>
@@ -445,6 +444,8 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.7/js/mdb.min.js"></script>
+<!-- Intro.js Step-by-step guide and feature introduction -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/intro.min.js"></script>
     <!-- haiiii https://github.com/twitter/twemoji is awesome -->
     <script src="twemoji.js"></script>
     <script src="game.js"></script>
