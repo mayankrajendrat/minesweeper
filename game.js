@@ -179,6 +179,7 @@ Game.prototype.resetMetadata = function () {
   document.querySelector('.wrapper').classList.remove('won', 'lost')
   document.querySelector('.result-emoji').textContent = ''
   document.querySelector('.default-emoji').innerHTML = this.usetwemoji ? twemoji.parse('😀') : '😀'
+ // document.querySelector('.js-settings').innerHTML = this.usetwemoji ? twemoji.parse('🔧') : '🔧'
   document.querySelector('.js-settings').innerHTML = this.usetwemoji ? twemoji.parse('🔧') : '🔧'
 }
 
@@ -195,7 +196,8 @@ Game.prototype.mine = function (bomb) {
   var base = document.createElement('button')
   base.type = 'button'
   base.setAttribute('aria-label', 'Field')
-  base.className = 'cell'
+  base.className = 'cell btn btn-light-blue'
+  //base.className = 'cell'
   base.appendChild(this.emojiset[3].cloneNode())
   base.isMasked = true
   if (bomb) base.isBomb = true
@@ -282,9 +284,10 @@ Game.prototype.updateBombsLeft = function () {
 }
 
 Game.prototype.updateFeedback = function (text) {
-  feedback.textContent = text
+  debugger
+  feedback.innerHTML = text
   // Toggle period to force voiceover to read out the same content
-  if (this.feedbackToggle) feedback.textContent += "."
+  if (this.feedbackToggle) feedback.innerHTML += "."
   this.feedbackToggle = !this.feedbackToggle
 }
 

@@ -21,7 +21,11 @@
       span, input, a, div, button {
         box-sizing: border-box;
       }
-
+      .card-1 {
+  padding: 10px 10px 10px 10px;
+  float: none;
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
       .btn, .input {
         padding: 12px 15px;
         font-size: 0.65em;
@@ -257,7 +261,7 @@
         text-decoration: none;
       }
 
-      .feedback {
+      /* .feedback {
         font-size: 1px;
         width: 1px;
         height: 1;
@@ -265,54 +269,165 @@
         position: absolute;
         left: -1px;
         top: -1px;
-      }
+      } */
+      .btn-floating {
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+    width: 47px;
+    height: 47px;
+    position: relative;
+    z-index: 1;
+    vertical-align: middle;
+    display: inline-block;
+    overflow: hidden;
+    transition: all .2s ease-in-out;
+    margin: 10px;
+    border-radius: 50%;
+    padding: 0;
+    cursor: pointer;
+}
     </style>
   </head>
   <body class="grey lighten-5">
 <!-- As a heading --> 
-<nav class="navbar navbar-light blue lighten-4">
-    <span class="navbar-brand">MineSweeper</span>
-    <a class="navbar-brand text-left" href="https://github.com/mayankrajendrat/minesweeper"><i class="fas fa-info-circle"></i></span>
-  </nav>
+<header>
+    <!-- Navbar -->
+    <nav class="navbar navbar-light blue lighten-4">
+      <span class="navbar-brand"><strong>MineSweeper</strong> </span>
+      <a class="navbar-brand text-left" href="https://github.com/mayankrajendrat/minesweeper"><i class="fab fa-github"></i></a>
+    </nav> 
+    <!-- Navbar -->
+</header>
+
+
+
+
 
 <main>
   <div class="container-fluid mt-2">
     <section>
-        <div class="row">
 
+      <!-- Grid row -->
+      <div class="row justify-content-md-center">
+  
+        <!-- Grid column -->
+        <div class="col-lg-4 col-md-6 mb-4">
+  
+          <div class="card panels-card wrapper">
+
+            <div class="rounded-top grey lighten-2 dark-grey-text row ml-0 mr-0">
+              <div class="col-12">
+                  <ul class="list-inline float-center my-0 py-1 pr-3">
+                      <li class="list-inline-item">
+                          <button type="button" class="action-btn js-new-game btn btn-default btn-lg btn-block" aria-label="New game">
+                              <span class="default-emoji"></span>
+                              <span id="result" class="result-emoji"></span>
+                            </button>
+                      </li>
+                    </ul>
+              </div>
+              
+             
+            </div>
+          
+            <!--Navbar-->
+            <nav class="navbar navbar-expand-lg navbar-dark grey lighten-5 d-flex justify-content-between z-depth-1-bottom">
+          
+                <div>
+                  <ul class="list-inline my-2 py-1 dark-grey-text">
+                    <li class="list-inline-item">
+                      <i class="fas fa-clock"></i>
+                    </li>
+                    <li class="list-inline-item font-weight-bold text-uppercase">
+                      <div id="timer"></div>
+                    </li>
+                  </ul>
+                </div>
+          
+                <div>
+                  <ul class="list-inline my-2 py-1 dark-grey-text">
+                    <li class="list-inline-item">
+                      <i class="fas fa-bomb" aria-hidden="true"></i>
+                      <span id="bombs-left">0</span>
+                    </li>
+                    <li class="list-inline-item">
+                      <i class="fas fa-arrows-alt" aria-hidden="true"></i>
+                      <span id="moves"></span><span> Move(s)</span>
+                    </li>
+                    <li class="list-inline-item">
+                        <button type="button" class="settings js-settings" aria-haspopup="true" aria-expanded="false" aria-label="Settings">
+                            <i class="fas fa-cogs"></i>
+                        </button>
+                      </li>
+                  </ul>
+                </div>
+          
+            </nav>
+            <!--/.Navbar-->
+          
+            <div class="card-body grey lighten-5 rounded-bottom">
+          
+              <!-- Grid row -->
+              <div class="row">
+          
+               <div class="col-12 p-1">
+                  <div id="map" role="grid" aria-label="Mine field">
+                    </div>
+                    <div class="js-settings-popup settings-popup">
+                        <div class="flex">
+                          <label class="btn flex-cell" aria-label="Use Twitter Emoji"><input type="radio" name="emoji" id="twemoji" checked> Twemoji</label>
+                          <label class="btn flex-cell" aria-label="Use Native Emoji"><input type="radio" name="emoji" id="emoji"> Native emoji</label>
+                        </div>
+                        <div class="flex">
+                          <input id="cols" class="input flex-cell" type="number" value="10" min="1" max="500" aria-label="Columns">
+                          <div class="flex-cell divider">&times;</div>
+                          <input id="rows" class="input flex-cell" type="number" value="10" min="1" max="500" aria-label="Rows"><br>
+                        </div>
+                        <div class="prepend-input">💣</div>
+                        <input id="bombs" class="input" type="number" value="10" min="1" max="2500" aria-label="Number of bombs">
+                        <select id="emojiset" class="input input-select" aria-label="Change emoji set">
+                          <option value="🐣 💣 🚧 ◻️">🐣 💣 🚧</option>
+                          <option value="🍰 👾 📌 ◻️">🍰 👾 📌</option>
+                          <option value="🌷 ⚡️ 🐞 ◻️">🌷 ⚡️ 🐞</option>
+                          <option value="⭕️ ❌ ❗️ ✖️️">⭕️ ❌ ❗️ ✖️</option>
+                          <option value="☀ ⚡ ☔ ☁️">☀ ⚡ ☔ ☁️</option>
+                        </select>
+                        <button class="js-popup-new-game btn" type="button">Save and restart game</button>
+                      </div>
+                </div>
+                <!-- Grid column -->
+          
+              </div>
+              <!-- Grid row -->
+          
+            </div>
+            <!-- Card footer -->
+    <div class="card-footer text-muted text-center mt-4">
+        <div aria-live="assertive"><i class="fas fa-info-circle"></i> <span class="feedback"></span> </div>
+    </div>
           </div>
+          <!-- Card -->
+
+        </div>
+        <!-- Grid column -->
+  
+    
+  
+      </div>
+      <!-- Grid row -->
+  
     </section>
+
   </div>
 </main>
 
-    
+<!--     
     <div class="wrapper">
       <button type="button" class="settings js-settings" aria-haspopup="true" aria-expanded="false" aria-label="Settings"></button>
-      <div class="js-settings-popup settings-popup">
-        <div class="flex">
-          <label class="btn flex-cell" aria-label="Use Twitter Emoji"><input type="radio" name="emoji" id="twemoji" checked> Twemoji</label>
-          <label class="btn flex-cell" aria-label="Use Native Emoji"><input type="radio" name="emoji" id="emoji"> Native emoji</label>
-        </div>
-        <div class="flex">
-          <input id="cols" class="input flex-cell" type="number" value="10" min="1" max="500" aria-label="Columns">
-          <div class="flex-cell divider">&times;</div>
-          <input id="rows" class="input flex-cell" type="number" value="10" min="1" max="500" aria-label="Rows"><br>
-        </div>
-        <div class="prepend-input">💣</div>
-        <input id="bombs" class="input" type="number" value="10" min="1" max="2500" aria-label="Number of bombs">
-        <select id="emojiset" class="input input-select" aria-label="Change emoji set">
-          <option value="🐣 💣 🚧 ◻️">🐣 💣 🚧</option>
-          <option value="🍰 👾 📌 ◻️">🍰 👾 📌</option>
-          <option value="🌷 ⚡️ 🐞 ◻️">🌷 ⚡️ 🐞</option>
-          <option value="⭕️ ❌ ❗️ ✖️️">⭕️ ❌ ❗️ ✖️</option>
-          <option value="☀ ⚡ ☔ ☁️">☀ ⚡ ☔ ☁️</option>
-        </select>
-        <button class="js-popup-new-game btn" type="button">Save and restart game</button>
-      </div>
+     
       <button type="button" class="action-btn js-new-game" aria-label="New game">
-        <span class="default-emoji"></span>
-        <span id="result" class="result-emoji"></span>
-      </button>
+          <span class="default-emoji"></span>
+          <span id="result" class="result-emoji"></span>
+        </button>
       <div id="map" role="grid" aria-label="Mine field">
       </div>
       <div class="bar flex">
@@ -320,11 +435,8 @@
         <div class="stat flex-cell"><div id="moves"></div><span class="small-text">MOVES</span></div>
         <div class="stat flex-cell"><div id="timer"></div><span class="small-text">TIME</span></div>
       </div>
-    </div>
-
-    <!-- haiiii https://github.com/twitter/twemoji is awesome -->
-    <script src="twemoji.js"></script>
-    <script src="game.js"></script>
+    </div> -->
+   
 <!-- JQuery -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!-- Bootstrap tooltips -->
@@ -333,6 +445,10 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.7/js/mdb.min.js"></script>
+    <!-- haiiii https://github.com/twitter/twemoji is awesome -->
+    <script src="twemoji.js"></script>
+    <script src="game.js"></script>
+
     <script>
       var emojiset = document.getElementById('emojiset').value.split(' ')
       var cols = document.getElementById('cols')
