@@ -13,298 +13,42 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.7/css/mdb.min.css" rel="stylesheet">
 <!--Intro JS -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/introjs.css" rel="stylesheet">
+<!--Element specific styles -->
+<link href="assets/css/style.css" rel="stylesheet">
 
-    <style type="text/css">
-      body {
-        font-size: 15px;
-        text-align: center;
-        padding: 0px 0;
-      }
-
-      span, input, a, div, button {
-        box-sizing: border-box;
-      }
-
-      .btn, .input {
-        padding: 12px 15px;
-        font-size: 0.65em;
-        border-radius: 3px;
-        font-family: 'Exo 2', sans-serif;
-        color: #666;
-        font-weight: bold;
-        display: inline-block;
-      }
-
-      .btn {
-        background: #f7f7f7;
-        text-decoration: none;
-        text-transform: uppercase;
-        border: 0;
-        cursor: pointer;
-        margin-bottom: 10px;
-        letter-spacing: 1px;
-      }
-
-      .flex {
-        display: flex;
-      }
-
-      .flex-cell {
-        flex: 1 1 auto;
-      }
-
-      .action-btn {
-        margin-bottom: 10px;
-        background-color: transparent;
-        width: 100%;
-        display: block;
-        font-size: 1.2em;
-        padding: 10px;
-        border: 1px solid #eee;
-        text-decoration: none;
-        border-radius: 5px;
-      }
-
-      .action-btn:hover {
-        background-color: #f4f4f4;
-      }
-
-      .action-btn .emoji {
-        width: 20px;
-        height: 20px;
-      }
-
-      input[type=radio] {
-        margin: 0 5px 0 0;
-      }
-
-      input[type=number] {
-        padding-right: 5px;
-      }
-
-      .input {
-        border: 1px solid #e0e0e0;
-      }
-
-      .input-select {
-        width: 100%;
-        height: 40px;
-        padding: 12px;
-        font-size: 1em;
-        margin-bottom: 10px;
-        background: transparent;
-      }
-
-      .divider {
-        align-self: center;
-        flex: 0;
-        padding: 0 10px;
-        color: #999;
-        font-size: 0.65em;
-      }
-
-      .prepend-input {
-        padding: 7px 8px 6px 10px;
-        margin: 5px 0;
-        border-right: 1px solid #e0e0e0;
-        line-height: 1;
-        position: absolute;
-      }
-
-      .prepend-input + input {
-        width: 100%;
-        padding-left: 45px;
-        margin-bottom: 10px;
-      }
-
-      code {
-        display: none;
-        margin-top: 10px;
-        text-transform: none;
-        background-color: #fff;
-        padding: 2px 4px;
-        max-width: 400px;
-        text-align: left;
-      }
-
-      .cell .emoji {
-        width: 100%;
-      }
-
-      .cell {
-        /* disable hold to save image in iOS */
-        -webkit-touch-callout: none;
-        width: 25px;
-        height: 25px;
-        font-size: 20px;
-        background-color: transparent;
-        border: 0;
-        display: inline-block;
-        position: relative;
-        padding: 2px 3px;
-        vertical-align: middle;
-        cursor: pointer;
-      }
-
-      .unmasked {
-        cursor: default;
-      }
-
-      #map {
-        white-space: nowrap;
-      }
-
-      .wrapper {
-        padding: 10px;
-        position: relative;
-        -webkit-user-select: none;
-        user-select: none;
-        border-radius: 10px;
-        margin-top: 10px;
-        border: 5px solid #f4f4f4;
-        display: inline-block;
-        min-width: 250px;
-      }
-
-      .won .default-emoji,
-      .lost .default-emoji {
-        display: none;
-      }
-
-      .won #map,
-      .lost #map {
-        pointer-events: none;
-      }
-
-      .lost {
-        box-shadow: 0 0 1px #f00;
-      }
-
-      .won {
-        box-shadow: 0 0 1px #1a1;
-      }
-
-      .bar {
-        margin: 10px -10px -10px;
-        background-color: #f4f4f4;
-      }
-
-      .stat {
-        width: 33.3%;
-        font-size: 0.85em;
-        padding: 8px 10px 5px;
-        text-align: center;
-      }
-
-      .small-text {
-        display: block;
-        color: #999;
-        margin-top: 5px;
-        font-size: 0.7em;
-        letter-spacing: 1px;
-      }
-
-      .settings {
-        position: absolute;
-        width: 40px;
-        height: 40px;
-        top: -20px;
-        right: -20px;
-        background-color: #f4f4f4;
-        text-align: center;
-        border-radius: 25px;
-        padding: 2px 8px;
-        border: 5px solid #fff;
-        cursor: pointer;
-        z-index: 1;
-      }
-
-      .settings .emoji {
-        width: 15px;
-        margin: 6px 0;
-      }
-
-      .settings-popup {
-        margin-right: 10px;
-        display: none;
-        position: absolute;
-      }
-
-      .settings-popup button {
-        width: 100%;
-        margin: 0;
-      }
-
-      .settings-popup .flex {
-        margin-bottom: 10px;
-      }
-
-      .show {
-        display: block;
-      }
-
-      .settings-popup.show ~ * {
-        visibility: hidden;
-      }
-
-      .stat,
-      .link-to-github {
-        font-family: "Exo 2", sans-serif;
-      }
-
-      .link-to-github {
-        margin: 40px auto;
-        display: block;
-        font-size: 12px;
-        color: #08c;
-        text-decoration: none;
-      }
-
-      /* .feedback {
-        font-size: 1px;
-        width: 1px;
-        height: 1;
-        overflow: hidden;
-        position: absolute;
-        left: -1px;
-        top: -1px;
-      } */
-      .btn-floating {
-    box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
-    width: 47px;
-    height: 47px;
-    position: relative;
-    z-index: 1;
-    vertical-align: middle;
-    display: inline-block;
-    overflow: hidden;
-    transition: all .2s ease-in-out;
-    margin: 10px;
-    border-radius: 50%;
-    padding: 0;
-    cursor: pointer;
-}
-    </style>
   </head>
   <body class="grey lighten-5">
 <!-- As a heading --> 
 <header>
-    <!-- Navbar -->
-    <nav class="navbar navbar-light blue lighten-4">
-      <span class="navbar-brand"><strong>MineSweeper</strong> </span>
-      <a class="navbar-brand text-left" href="https://github.com/mayankrajendrat/minesweeper"><i class="fab fa-github"></i></a>
-    </nav> 
-    <!-- Navbar -->
+<!--Navbar -->
+<nav class="mb-1 navbar navbar-expand-lg navbar-light blue lighten-4">
+  <a class="navbar-brand" href="#">MineSweeper</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
+    aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse">
+  
+    <ul class="navbar-nav ml-auto nav-flex-icons">
+      <li class="nav-item">
+        <a class="nav-link waves-effect waves-light" href="https://github.com/mayankrajendrat/minesweeper">
+          <i class="fab fa-github"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link waves-effect waves-light">
+          <i class="fas fa-info-circle"></i>
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+</nav>
+<!--/.Navbar -->
 </header>
-
-
-
-
-
 <main>
   <div class="container-fluid mt-2">
     <section>
-
       <!-- Grid row -->
       <div class="row justify-content-md-center">
   
@@ -353,7 +97,7 @@
                       <span id="moves"></span><span> Move(s)</span>
                     </li>
                     <li class="list-inline-item">
-                        <button type="button" class="settings js-settings" aria-haspopup="true" aria-expanded="false" aria-label="Settings" data-intro='Customize game settings based on preference.' data-step=5>
+                        <button type="button" class="settings js-settings" aria-haspopup="true" aria-expanded="false" data-toggle="modal" data-target="#settingModal" aria-label="Settings" data-intro='Customize game settings based on preference.' data-step=5>
                             <i class="fas fa-cogs"></i>
                         </button>
                       </li>
@@ -371,27 +115,6 @@
                <div class="col-12 p-1">
                   <div id="map" role="grid" aria-label="Mine field" data-intro='Mine Field' data-step=6>
                     </div>
-                    <div class="js-settings-popup settings-popup">
-                        <div class="flex">
-                          <label class="btn flex-cell" aria-label="Use Twitter Emoji"><input type="radio" name="emoji" id="twemoji" checked> Twemoji</label>
-                          <label class="btn flex-cell" aria-label="Use Native Emoji"><input type="radio" name="emoji" id="emoji"> Native emoji</label>
-                        </div>
-                        <div class="flex">
-                          <input id="cols" class="input flex-cell" type="number" value="10" min="1" max="500" aria-label="Columns">
-                          <div class="flex-cell divider">&times;</div>
-                          <input id="rows" class="input flex-cell" type="number" value="10" min="1" max="500" aria-label="Rows"><br>
-                        </div>
-                        <div class="prepend-input">💣</div>
-                        <input id="bombs" class="input" type="number" value="10" min="1" max="2500" aria-label="Number of bombs">
-                        <select id="emojiset" class="input input-select" aria-label="Change emoji set">
-                          <option value="🐣 💣 🚧 ◻️">🐣 💣 🚧</option>
-                          <option value="🍰 👾 📌 ◻️">🍰 👾 📌</option>
-                          <option value="🌷 ⚡️ 🐞 ◻️">🌷 ⚡️ 🐞</option>
-                          <option value="⭕️ ❌ ❗️ ✖️️">⭕️ ❌ ❗️ ✖️</option>
-                          <option value="☀ ⚡ ☔ ☁️">☀ ⚡ ☔ ☁️</option>
-                        </select>
-                        <button class="js-popup-new-game btn" type="button">Save and restart game</button>
-                      </div>
                 </div>
                 <!-- Grid column -->
           
@@ -408,33 +131,57 @@
 
         </div>
         <!-- Grid column -->
-  
-    
-  
       </div>
       <!-- Grid row -->
-  
     </section>
-
   </div>
 </main>
 
-<!--     
-    <div class="wrapper">
-      <button type="button" class="settings js-settings" aria-haspopup="true" aria-expanded="false" aria-label="Settings"></button>
-     
-      <button type="button" class="action-btn js-new-game" aria-label="New game">
-          <span class="default-emoji"></span>
-          <span id="result" class="result-emoji"></span>
+
+<!-- Setting Modal -->
+<div class="modal fade" id="settingModal" tabindex="-1" role="dialog" aria-labelledby="settingModalTitle"
+  aria-hidden="true">
+
+  <!-- Add .modal-dialog-centered to .modal-dialog to vertically center the modal -->
+  <div class="modal-dialog modal-dialog-centered" role="document">
+
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="settingModalTitle">Game Setting</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
         </button>
-      <div id="map" role="grid" aria-label="Mine field">
       </div>
-      <div class="bar flex">
-        <div class="stat flex-cell"><div id="bombs-left">0</div><span class="small-text">BOMBS</span></div>
-        <div class="stat flex-cell"><div id="moves"></div><span class="small-text">MOVES</span></div>
-        <div class="stat flex-cell"><div id="timer"></div><span class="small-text">TIME</span></div>
+      <div class="modal-body">
+        <div class="js-settings-popup grey lighten-5">
+          <form class="text-center border border-light p-3" action="#!">
+          <div class="form-row mb-4">
+            <div class="col">
+                <!-- No. of Columns -->
+                <input  type="number" value="10" min="1" max="500" aria-label="Columns" id="cols" class="form-control" />
+            </div>
+            <span class="align-middle mt-3"><i class="fas fa-times"></i></span>
+            <div class="col">
+                <!-- No. of Rows -->
+                <input  type="number" value="10" min="1" max="500" aria-label="Rows" id="rows" class="form-control" >
+            </div>
+        </div>
+    
+        <!-- No. of Bombs -->
+        <div class="prepend-input">💣</div>
+        <input id="bombs" class="form-control mb-4" type="number" value="10" min="1" max="2500" aria-label="Number of bombs">
+    </form>
+        </div>
       </div>
-    </div> -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary js-popup-new-game" data-dismiss="modal">Save  and restart game</button>
+      </div>
+    </div>
+  </div>
+</div>
+
    
 <!-- JQuery -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -446,32 +193,24 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.7/js/mdb.min.js"></script>
 <!-- Intro.js Step-by-step guide and feature introduction -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/intro.min.js"></script>
-    <!-- haiiii https://github.com/twitter/twemoji is awesome -->
+    <!--  Twitter Emoji Icons -->
     <script src="twemoji.js"></script>
+    <!--  Javscript Logic -->
     <script src="game.js"></script>
-
     <script>
-      var emojiset = document.getElementById('emojiset').value.split(' ')
+      var emojiset = ['⭕️','💣','🚩','◻️'];
       var cols = document.getElementById('cols')
       var rows = document.getElementById('rows')
       var bombs = document.getElementById('bombs')
 
-      game = new Game(cols.value, rows.value, bombs.value, emojiset, document.getElementById('twemoji').checked)
+      game = new mineSweeper(cols.value, rows.value, bombs.value, emojiset, true)
 
       document.querySelector('.js-new-game').addEventListener('click', restart)
       document.querySelector('.js-popup-new-game').addEventListener('click', restart)
-
-      document.querySelector('.js-settings').addEventListener('click', function() {
-        var list = document.querySelector('.js-settings-popup').classList
-        list.contains('show') ? list.remove('show') : list.add('show')
-        this.setAttribute('aria-expanded', list.contains('show'))
-      })
-
+      introJs().start();
       function restart () {
         clearInterval(game.timer)
-        emojiset = document.getElementById('emojiset').value.split(' ')
-        game = new Game(cols.value, rows.value, bombs.value, emojiset, document.getElementById('twemoji').checked)
-        document.querySelector('.js-settings-popup').classList.remove('show')
+        game = new mineSweeper(cols.value, rows.value, bombs.value, emojiset, true)
         return false
       }
     </script>

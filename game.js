@@ -1,33 +1,40 @@
+/*!
+ * Minesweeper Game
+ * https://github.com/mayankrajendrat/minesweeper
+ *
+ * Released under the MIT license
+ * 
+ * Date: 2019-08-09
+ */
+
+
 /* global twemoji, alert, MouseEvent, game */
-const numbers = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣']
-const iDevise = navigator.platform.match(/^iP/)
-const feedback = document.querySelector('.feedback')
+const numbers = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣'];
+const feedback = document.querySelector('.feedback');
 
-var Game = function (cols, rows, number_of_bombs, set, usetwemoji) {
-  this.number_of_cells = cols * rows
-  this.map = document.getElementById('map')
-  this.cols = Number(cols)
-  this.rows = Number(rows)
-  this.number_of_bombs = Number(number_of_bombs)
-  this.rate = number_of_bombs / this.number_of_cells
+// Initialize a mineSweeper object with initial configuration
+var mineSweeper = function (cols, rows, number_of_bombs, set, usetwemoji) {
+  this.number_of_cells = cols * rows;
+  this.map = document.getElementById('map');
+  this.cols = Number(cols);
+  this.rows = Number(rows);
+  this.number_of_bombs = Number(number_of_bombs);
+  this.rate = number_of_bombs / this.number_of_cells;
 
-  this.emojiset = set
-  this.numbermoji = [this.emojiset[0]].concat(numbers)
-  this.usetwemoji = usetwemoji || false
+  this.emojiset = set;
+  this.numbermoji = [this.emojiset[0]].concat(numbers);
+  this.usetwemoji = usetwemoji || false;
 
-  this.init();
-  this.startIntro();
+  this.init(); // Initiate the process to start the game
 }
-Game.prototype.startIntro=function (){
-  introJs().start();
-}
-Game.prototype.init = function () {
-  this.prepareEmoji()
 
-  if (this.number_of_cells > 2500) { alert('too big, go away, have less than 2500 cells'); return false }
-  if (this.number_of_cells <= this.number_of_bombs) { alert('more bombs than cells, can\'t do it'); return false }
-  var that = this
-  this.moveIt(true)
+mineSweeper.prototype.init = function () {
+  this.prepareEmoji(); //Assign Emojis using twitter open source library(Twemoji)
+
+  if (this.number_of_cells > 2500) { alert('Too big to handle, please have less than 2500 cells.'); return false } // Prevent for big Matrix
+  if (this.number_of_cells <= this.number_of_bombs) { alert('more bombs than cells not allowed!'); return false } // Validation w.r.t number of cells for bombs
+  var that = this // Assign into new variable to avoid conflict between global context and functional context
+  this.moveIt(true);
   this.map.innerHTML = ''
   var grid_data = this.bomb_array()
 
@@ -67,7 +74,7 @@ Game.prototype.init = function () {
   this.updateBombsLeft()
 }
 
-Game.prototype.bindEvents = function () {
+mineSweeper.prototype.bindEvents = function () {
   var that = this
   var cells = document.getElementsByClassName('cell')
 
@@ -95,17 +102,6 @@ Game.prototype.bindEvents = function () {
       }
       that.game()
     })
-
-    // double clicking on a cell and opening the cell and all 8 of its neighbors
-    target.addEventListener('dblclick', function () {
-      if (target.isFlagged) return
-      that.moveIt()
-
-      target.reveal()
-      that.revealNeighbors(target)
-      that.game()
-    })
-
     // marking a cell as a potential bomb
     target.addEventListener('contextmenu', function (evt) {
       var emoji
@@ -126,19 +122,6 @@ Game.prototype.bindEvents = function () {
       target.appendChild(emoji)
       that.updateBombsLeft()
     })
-
-    // support to HOLD to mark bomb, works in Android by default
-    if (iDevise) {
-      target.addEventListener('touchstart', function (evt) {
-        that.holding = setTimeout(function () {
-          target.dispatchEvent(new Event('contextmenu'))
-        }, 500)
-      })
-
-      target.addEventListener('touchend', function (evt) {
-        clearTimeout(that.holding)
-      })
-    }
   })
 
   window.addEventListener('keydown', function (evt) {
@@ -148,7 +131,7 @@ Game.prototype.bindEvents = function () {
   })
 }
 
-Game.prototype.game = function () {
+mineSweeper.prototype.game = function () {
   if (this.result) return
   var cells = document.getElementsByClassName('cell')
   var masked = Array.prototype.filter.call(cells, function (cell) {
@@ -169,7 +152,7 @@ Game.prototype.game = function () {
   }
 }
 
-Game.prototype.restart = function (usetwemoji) {
+mineSweeper.prototype.restart = function (usetwemoji) {
   clearInterval(this.timer)
   this.result = false
   this.timer = false
@@ -177,7 +160,7 @@ Game.prototype.restart = function (usetwemoji) {
   this.init()
 }
 
-Game.prototype.resetMetadata = function () {
+mineSweeper.prototype.resetMetadata = function () {
   document.getElementById('timer').textContent = '0.00'
   document.querySelector('.wrapper').classList.remove('won', 'lost')
   document.querySelector('.result-emoji').textContent = ''
@@ -186,7 +169,7 @@ Game.prototype.resetMetadata = function () {
   document.querySelector('.js-settings').innerHTML = this.usetwemoji ? twemoji.parse('🔧') : '🔧'
 }
 
-Game.prototype.startTimer = function () {
+mineSweeper.prototype.startTimer = function () {
   if (this.timer) return
   this.startTime = new Date()
   this.timer = setInterval(function () {
@@ -194,7 +177,7 @@ Game.prototype.startTimer = function () {
   }, 100)
 }
 
-Game.prototype.mine = function (bomb) {
+mineSweeper.prototype.mine = function (bomb) {
   var that = this
   var base = document.createElement('button')
   base.type = 'button'
@@ -216,7 +199,7 @@ Game.prototype.mine = function (bomb) {
   return base
 }
 
-Game.prototype.revealNeighbors = function (mine) {
+mineSweeper.prototype.revealNeighbors = function (mine) {
   var neighbors = document.querySelectorAll(mine.neighbors)
   for(var i = 0; i < neighbors.length; i++) {
     if (neighbors[i].isMasked && !neighbors[i].isFlagged) {
@@ -229,7 +212,7 @@ Game.prototype.revealNeighbors = function (mine) {
   }
 }
 
-Game.prototype.prepareEmoji = function () {
+mineSweeper.prototype.prepareEmoji = function () {
   var that = this
   function makeEmojiElement (emoji) {
     var ele
@@ -252,7 +235,8 @@ Game.prototype.prepareEmoji = function () {
   this.numbermoji = this.numbermoji.map(makeEmojiElement)
 }
 
-Game.prototype.bomb_array = function () {
+// Assign bombs w.r.t rate of the cells
+mineSweeper.prototype.bomb_array = function () {
   var chance = Math.floor(this.rate * this.number_of_cells)
   var arr = []
   for (var i = 0; i < chance; i++) {
@@ -264,7 +248,7 @@ Game.prototype.bomb_array = function () {
   return this.shuffle(arr)
 }
 
-Game.prototype.shuffle = function (array) {
+mineSweeper.prototype.shuffle = function (array) {
   var currentIndex = array.length, temporaryValue, randomIndex
   while (currentIndex !== 0) {
     randomIndex = Math.floor(Math.random() * currentIndex)
@@ -276,25 +260,24 @@ Game.prototype.shuffle = function (array) {
   return array
 }
 
-Game.prototype.moveIt = function (zero) {
+mineSweeper.prototype.moveIt = function (zero) {
   zero ? this.moves = 0 : this.moves++
   document.getElementById('moves').textContent = this.moves
 }
 
-Game.prototype.updateBombsLeft = function () {
+mineSweeper.prototype.updateBombsLeft = function () {
   var flagged = Array.prototype.filter.call(document.getElementsByClassName('cell'), function (target) { return target.isFlagged })
   document.getElementById('bombs-left').textContent = `${this.number_of_bombs - flagged.length}/${this.number_of_bombs}`
 }
 
-Game.prototype.updateFeedback = function (text) {
-  debugger
+mineSweeper.prototype.updateFeedback = function (text) {
   feedback.innerHTML = text
   // Toggle period to force voiceover to read out the same content
   if (this.feedbackToggle) feedback.innerHTML += "."
   this.feedbackToggle = !this.feedbackToggle
 }
 
-Game.prototype.showMessage = function () {
+mineSweeper.prototype.showMessage = function () {
   clearInterval(this.timer)
   var seconds = ((new Date() - this.startTime) / 1000).toFixed(2)
   var winner = this.result === 'won'
@@ -307,6 +290,6 @@ Game.prototype.showMessage = function () {
 
 // console documentation
 
-console.log('Use: `new Game(cols, rows, bombs, [emptyemoji, bombemoji, flagemoji, starteremoji], twemojiOrNot)` to start a new game with customizations.')
-console.log(' Eg: `game = new Game(10, 10, 10, ["🌱", "💥", "🚩", "◻️"], false)`')
-console.log(' Or: `game = new Game(16, 16, 30, ["🐣", "💣", "🚧", "◻️"], true)`')
+console.log('Use: `new mineSweeper(cols, rows, bombs, [emptyemoji, bombemoji, flagemoji, starteremoji], twemojiOrNot)` to start a new game with customizations.')
+console.log(' Eg: `game = new mineSweeper(10, 10, 10, ["🌱", "💥", "🚩", "◻️"], false)`');
+console.log(' Or: `game = new mineSweeper(16, 16, 30, ["🐣", "💣", "🚧", "◻️"], true)`');
