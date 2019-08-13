@@ -13,7 +13,8 @@ const numbers = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣
 const feedback = document.querySelector('.feedback');
 
 // Initialize a mineSweeper object with initial configuration
-var mineSweeper = function (cols, rows, number_of_bombs, set, usetwemoji) {
+class mineSweeper { 
+  constructor (cols, rows, number_of_bombs, set, usetwemoji) {
   this.number_of_cells = cols * rows;
   this.map = document.getElementById('map');
   this.cols = Number(cols);
@@ -28,7 +29,7 @@ var mineSweeper = function (cols, rows, number_of_bombs, set, usetwemoji) {
   this.init(); // Initiate the process to start the game
 }
 
-mineSweeper.prototype.init = function () {
+init() {
   this.prepareEmoji(); //Assign Emojis using twitter open source library(Twemoji)
 
   if (this.number_of_cells > 2500) { alert('Too big to handle, please have less than 2500 cells.'); return false } // Prevent for big Matrix
@@ -74,7 +75,7 @@ mineSweeper.prototype.init = function () {
   this.updateBombsLeft()
 }
 
-mineSweeper.prototype.bindEvents = function () {
+bindEvents() {
   var that = this
   var cells = document.getElementsByClassName('cell')
 
@@ -131,7 +132,7 @@ mineSweeper.prototype.bindEvents = function () {
   })
 }
 
-mineSweeper.prototype.game = function () {
+game() {
   if (this.result) return
   var cells = document.getElementsByClassName('cell')
   var masked = Array.prototype.filter.call(cells, function (cell) {
@@ -152,7 +153,7 @@ mineSweeper.prototype.game = function () {
   }
 }
 
-mineSweeper.prototype.restart = function (usetwemoji) {
+restart(usetwemoji) {
   clearInterval(this.timer)
   this.result = false
   this.timer = false
@@ -160,7 +161,7 @@ mineSweeper.prototype.restart = function (usetwemoji) {
   this.init()
 }
 
-mineSweeper.prototype.resetMetadata = function () {
+resetMetadata () {
   document.getElementById('timer').textContent = '0.00'
   document.querySelector('.wrapper').classList.remove('won', 'lost')
   document.querySelector('.result-emoji').textContent = ''
@@ -169,7 +170,7 @@ mineSweeper.prototype.resetMetadata = function () {
   document.querySelector('.js-settings').innerHTML = this.usetwemoji ? twemoji.parse('🔧') : '🔧'
 }
 
-mineSweeper.prototype.startTimer = function () {
+startTimer() {
   if (this.timer) return
   this.startTime = new Date()
   this.timer = setInterval(function () {
@@ -177,7 +178,7 @@ mineSweeper.prototype.startTimer = function () {
   }, 100)
 }
 
-mineSweeper.prototype.mine = function (bomb) {
+mine(bomb) {
   var that = this
   var base = document.createElement('button')
   base.type = 'button'
@@ -199,7 +200,7 @@ mineSweeper.prototype.mine = function (bomb) {
   return base
 }
 
-mineSweeper.prototype.revealNeighbors = function (mine) {
+revealNeighbors(mine) {
   var neighbors = document.querySelectorAll(mine.neighbors)
   for(var i = 0; i < neighbors.length; i++) {
     if (neighbors[i].isMasked && !neighbors[i].isFlagged) {
@@ -212,7 +213,7 @@ mineSweeper.prototype.revealNeighbors = function (mine) {
   }
 }
 
-mineSweeper.prototype.prepareEmoji = function () {
+prepareEmoji() {
   var that = this
   function makeEmojiElement (emoji) {
     var ele
@@ -236,7 +237,7 @@ mineSweeper.prototype.prepareEmoji = function () {
 }
 
 // Assign bombs w.r.t rate of the cells
-mineSweeper.prototype.bomb_array = function () {
+bomb_array() {
   var chance = Math.floor(this.rate * this.number_of_cells)
   var arr = []
   for (var i = 0; i < chance; i++) {
@@ -248,7 +249,7 @@ mineSweeper.prototype.bomb_array = function () {
   return this.shuffle(arr)
 }
 
-mineSweeper.prototype.shuffle = function (array) {
+shuffle(array) {
   var currentIndex = array.length, temporaryValue, randomIndex
   while (currentIndex !== 0) {
     randomIndex = Math.floor(Math.random() * currentIndex)
@@ -259,25 +260,24 @@ mineSweeper.prototype.shuffle = function (array) {
   }
   return array
 }
-
-mineSweeper.prototype.moveIt = function (zero) {
+moveIt(zero) {
   zero ? this.moves = 0 : this.moves++
   document.getElementById('moves').textContent = this.moves
 }
 
-mineSweeper.prototype.updateBombsLeft = function () {
+updateBombsLeft() {
   var flagged = Array.prototype.filter.call(document.getElementsByClassName('cell'), function (target) { return target.isFlagged })
   document.getElementById('bombs-left').textContent = `${this.number_of_bombs - flagged.length}/${this.number_of_bombs}`
 }
 
-mineSweeper.prototype.updateFeedback = function (text) {
+updateFeedback(text) {
   feedback.innerHTML = text
   // Toggle period to force voiceover to read out the same content
   if (this.feedbackToggle) feedback.innerHTML += "."
   this.feedbackToggle = !this.feedbackToggle
 }
 
-mineSweeper.prototype.showMessage = function () {
+showMessage() {
   clearInterval(this.timer)
   var seconds = ((new Date() - this.startTime) / 1000).toFixed(2)
   var winner = this.result === 'won'
@@ -287,7 +287,7 @@ mineSweeper.prototype.showMessage = function () {
   document.getElementById('timer').textContent = seconds
   document.getElementById('result').innerHTML = this.usetwemoji ? twemoji.parse(emoji) : emoji
 }
-
+}
 // console documentation
 
 console.log('Use: `new mineSweeper(cols, rows, bombs, [emptyemoji, bombemoji, flagemoji, starteremoji], twemojiOrNot)` to start a new game with customizations.')
