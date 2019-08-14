@@ -56,7 +56,7 @@ On start the game will generate rows*cols cells and assigned n mines in random p
 
 ### Opening adjacent empty cells
 
-when player clicks a cell, the unmasked class will be and. which will control the display of the cell. Then, the mouse click will be disabled on that clicked cell. The timer will start with the first left click on the grid.
+when player clicks a cell, the unmasked class will be add and which will control the display of the cell. Then, the mouse click will be disabled on that clicked cell. The timer will start with the first left click on the grid.
 
 When player clicks empty cell, the surrounded cells - if blank which mean empty cell -will open up until a number or bomb or boundary is reached using recursive function.
 
