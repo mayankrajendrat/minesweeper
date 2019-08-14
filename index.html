@@ -1,80 +1,85 @@
 <!doctype>
 <html>
-  <head>
-    <title>💥</title>
-    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Font Awesome -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-<!-- Bootstrap core CSS -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-<!-- Material Design Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.7/css/mdb.min.css" rel="stylesheet">
-<!--Intro JS -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/introjs.css" rel="stylesheet">
-<!--Element specific styles -->
-<link href="assets/css/style.css" rel="stylesheet">
+<head>
+  <title>💥</title>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  </head>
-  <body class="grey lighten-5">
-<!-- As a heading --> 
-<header>
-<!--Navbar -->
-<nav class="mb-1 navbar navbar-expand-lg navbar-light blue lighten-4">
-  <a class="navbar-brand" href="#">MineSweeper</a>
-  
-  <div class="">
-  
-    <ul class="navbar-nav ml-auto nav-flex-icons">
-      <li class="nav-item">
-        <a class="nav-link waves-effect waves-light" href="https://github.com/mayankrajendrat/minesweeper">
-          <i class="fab fa-github"></i>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link waves-effect waves-light">
-          <i class="fas fa-info-circle"></i>
-        </a>
-      </li>
-      
-    </ul>
-  </div>
-</nav>
-<!--/.Navbar -->
-</header>
-<main>
-  <div class="container-fluid mt-2">
-    <section>
-      <!-- Grid row -->
-      <div class="row justify-content-md-center">
-  
-        <!-- Grid column -->
-        <div class="col-lg-4 col-md-6 mb-4">
-  
-          <div class="card panels-card wrapper">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.7/css/mdb.min.css" rel="stylesheet">
+  <!--Intro JS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/introjs.css" rel="stylesheet">
+  <!--Element specific styles -->
+  <link href="assets/css/style.css" rel="stylesheet">
 
-            <div class="rounded-top grey lighten-2 dark-grey-text row ml-0 mr-0">
-              <div class="col-12">
+</head>
+
+<body class="grey lighten-5">
+  <!-- As a heading -->
+  <header>
+    <!--Navbar -->
+    <nav class="mb-1 navbar navbar-expand-lg navbar-dark info-color">
+      <a class="navbar-brand" href="#">MineSweeper</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="https://github.com/mayankrajendrat/minesweeper">
+              <i class="fab fa-github"></i> github
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="fas fa-info-circle"></i> Info</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!--/.Navbar -->
+  </header>
+  <main>
+    <div class="container-fluid mt-2">
+      <section>
+        <!-- Grid row -->
+        <div class="row justify-content-md-center">
+
+          <!-- Grid column -->
+          <div class="col-lg-4 col-md-6 mb-4">
+
+            <div class="card panels-card wrapper">
+
+              <div class="rounded-top grey lighten-2 dark-grey-text row ml-0 mr-0">
+                <div class="col-12">
                   <ul class="list-inline float-center my-0 py-1 pr-3">
-                      <li class="list-inline-item">
-                          <button type="button" class="action-btn js-new-game btn btn-default btn-lg btn-block" aria-label="New game" data-intro='Reset Game!' data-step=1>
-                              <span class="default-emoji"></span>
-                              <span id="result" class="result-emoji"></span>
-                            </button>
-                      </li>
-                    </ul>
+                    <li class="list-inline-item">
+                      <button type="button" class="action-btn js-new-game btn btn-default btn-lg btn-block"
+                        aria-label="New game" data-intro='Reset Game!' data-step=1>
+                        <span class="default-emoji"></span>
+                        <span id="result" class="result-emoji"></span>
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+
+
               </div>
-              
-             
-            </div>
-          
-            <!--Navbar-->
-            <nav class="navbar navbar-expand-lg navbar-dark grey lighten-5 d-flex justify-content-between z-depth-1-bottom">
-          
+
+              <!--Navbar-->
+              <nav
+                class="navbar navbar-expand-lg navbar-dark grey lighten-5 d-flex justify-content-between z-depth-1-bottom">
+
                 <div>
                   <ul class="list-inline my-2 py-1 dark-grey-text" data-intro='Game Timer' data-step=2>
-                    <li class="list-inline-item" >
+                    <li class="list-inline-item">
                       <i class="fas fa-clock"></i>
                     </li>
                     <li class="list-inline-item font-weight-bold text-uppercase">
@@ -82,7 +87,7 @@
                     </li>
                   </ul>
                 </div>
-          
+
                 <div>
                   <ul class="list-inline my-2 py-1 dark-grey-text">
                     <li class="list-inline-item" data-intro='Number of hidden Bombs available in game' data-step=3>
@@ -94,122 +99,131 @@
                       <span id="moves"></span><span> Move(s)</span>
                     </li>
                     <li class="list-inline-item">
-                        <button type="button" class="settings js-settings" aria-haspopup="true" aria-expanded="false" data-toggle="modal" data-target="#settingModal" aria-label="Settings" data-intro='Customize game settings based on preference.' data-step=5>
-                            <i class="fas fa-cogs"></i>
-                        </button>
-                      </li>
+                      <button type="button" class="settings js-settings" aria-haspopup="true" aria-expanded="false"
+                        data-toggle="modal" data-target="#settingModal" aria-label="Settings"
+                        data-intro='Customize game settings based on preference.' data-step=5>
+                        <i class="fas fa-cogs"></i>
+                      </button>
+                    </li>
                   </ul>
                 </div>
-          
-            </nav>
-            <!--/.Navbar-->
-          
-            <div class="card-body grey lighten-5 rounded-bottom">
-          
-              <!-- Grid row -->
-              <div class="row">
-          
-               <div class="col-12 p-1">
-                  <div id="map" role="grid" aria-label="Mine field" data-intro='Mine Field' data-step=6>
+
+              </nav>
+              <!--/.Navbar-->
+
+              <div class="card-body grey lighten-5 rounded-bottom">
+
+                <!-- Grid row -->
+                <div class="row">
+
+                  <div class="col-12 p-1">
+                    <div id="map" role="grid" aria-label="Mine field" data-intro='Mine Field' data-step=6>
                     </div>
+                  </div>
+                  <!-- Grid column -->
+
                 </div>
-                <!-- Grid column -->
-          
+                <!-- Grid row -->
+
               </div>
-              <!-- Grid row -->
-          
+              <!-- Card footer -->
+              <div class="card-footer text-muted text-center mt-4" data-intro='Field information based on player moves.'
+                data-step=7>
+                <div aria-live="assertive"><i class="fas fa-info-circle"></i> <span class="feedback"></span> </div>
+              </div>
             </div>
-            <!-- Card footer -->
-    <div class="card-footer text-muted text-center mt-4" data-intro='Field information based on player moves.' data-step=7>
-        <div aria-live="assertive"><i class="fas fa-info-circle"></i> <span class="feedback"></span> </div>
-    </div>
+            <!-- Card -->
+
           </div>
-          <!-- Card -->
-
+          <!-- Grid column -->
         </div>
-        <!-- Grid column -->
-      </div>
-      <!-- Grid row -->
-    </section>
-  </div>
-</main>
+        <!-- Grid row -->
+      </section>
+    </div>
+  </main>
 
 
-<!-- Setting Modal -->
-<div class="modal fade" id="settingModal" tabindex="-1" role="dialog" aria-labelledby="settingModalTitle"
-  aria-hidden="true">
+  <!-- Setting Modal -->
+  <div class="modal fade" id="settingModal" tabindex="-1" role="dialog" aria-labelledby="settingModalTitle"
+    aria-hidden="true">
 
-  <!-- Add .modal-dialog-centered to .modal-dialog to vertically center the modal -->
-  <div class="modal-dialog modal-dialog-centered" role="document">
+    <!-- Add .modal-dialog-centered to .modal-dialog to vertically center the modal -->
+    <div class="modal-dialog modal-dialog-centered" role="document">
 
 
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="settingModalTitle">Game Setting</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="js-settings-popup grey lighten-5">
-          <form class="text-center border border-light p-3" action="#!">
-          <div class="form-row mb-4">
-            <div class="col">
-                <!-- No. of Columns -->
-                <input  type="number" value="10" min="1" max="500" aria-label="Columns" id="cols" class="form-control" />
-            </div>
-            <span class="align-middle mt-3"><i class="fas fa-times"></i></span>
-            <div class="col">
-                <!-- No. of Rows -->
-                <input  type="number" value="10" min="1" max="500" aria-label="Rows" id="rows" class="form-control" >
-            </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="settingModalTitle">Game Setting</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-    
-        <!-- No. of Bombs -->
-        <div class="prepend-input">💣</div>
-        <input id="bombs" class="form-control mb-4" type="number" value="10" min="1" max="2500" aria-label="Number of bombs">
-    </form>
+        <div class="modal-body">
+          <div class="js-settings-popup grey lighten-5">
+            <form class="text-center border border-light p-3" action="#!">
+              <div class="form-row mb-4">
+                <div class="col">
+                  <!-- No. of Columns -->
+                  <input type="number" value="10" min="1" max="500" aria-label="Columns" id="cols"
+                    class="form-control" />
+                </div>
+                <span class="align-middle mt-3"><i class="fas fa-times"></i></span>
+                <div class="col">
+                  <!-- No. of Rows -->
+                  <input type="number" value="10" min="1" max="500" aria-label="Rows" id="rows" class="form-control">
+                </div>
+              </div>
+
+              <!-- No. of Bombs -->
+              <div class="prepend-input">💣</div>
+              <input id="bombs" class="form-control mb-4" type="number" value="10" min="1" max="2500"
+                aria-label="Number of bombs">
+            </form>
+          </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary js-popup-new-game" data-dismiss="modal">Save  and restart game</button>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary js-popup-new-game" data-dismiss="modal">Save and restart
+            game</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-   
-<!-- JQuery -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<!-- Bootstrap tooltips -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
-<!-- Bootstrap core JavaScript -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<!-- MDB core JavaScript -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.7/js/mdb.min.js"></script>
-<!-- Intro.js Step-by-step guide and feature introduction -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/intro.min.js"></script>
-    <!--  Twitter Emoji Icons -->
-    <script src="twemoji.js"></script>
-    <!--  Javscript Logic -->
-    <script src="game.js"></script>
-    <script>
-      var emojiset = ['⭕️','💣','🚩','◻️'];
-      var cols = document.getElementById('cols')
-      var rows = document.getElementById('rows')
-      var bombs = document.getElementById('bombs')
 
+  <!-- JQuery -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.7/js/mdb.min.js"></script>
+  <!-- Intro.js Step-by-step guide and feature introduction -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/intro.min.js"></script>
+  <!--  Twitter Emoji Icons -->
+  <script src="assets/js/twemoji.js"></script>
+  <!--  Javscript Logic -->
+  <script src="assets/js/game.js"></script>
+  <script>
+    var emojiset = ['⭕️', '💣', '🚩', '◻️'];
+    var cols = document.getElementById('cols')
+    var rows = document.getElementById('rows')
+    var bombs = document.getElementById('bombs')
+
+    game = new mineSweeper(cols.value, rows.value, bombs.value, emojiset, true)
+
+    document.querySelector('.js-new-game').addEventListener('click', restart)
+    document.querySelector('.js-popup-new-game').addEventListener('click', restart)
+    introJs().start();
+    function restart() {
+      clearInterval(game.timer)
       game = new mineSweeper(cols.value, rows.value, bombs.value, emojiset, true)
+      return false
+    }
+  </script>
+</body>
 
-      document.querySelector('.js-new-game').addEventListener('click', restart)
-      document.querySelector('.js-popup-new-game').addEventListener('click', restart)
-      introJs().start();
-      function restart () {
-        clearInterval(game.timer)
-        game = new mineSweeper(cols.value, rows.value, bombs.value, emojiset, true)
-        return false
-      }
-    </script>
-  </body>
 </html>
