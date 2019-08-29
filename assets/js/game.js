@@ -26,9 +26,9 @@ class mineSweeper {
   this.numbermoji = [this.emojiset[0]].concat(numbers);
   this.usetwemoji = usetwemoji || false;
 
-  this.init(); // Initiate the process to start the game
+  this.init(); 
 }
-
+// Initiate the process to start the game
 init() {
   this.prepareEmoji(); //Assign Emojis using twitter open source library(Twemoji)
 
@@ -36,10 +36,10 @@ init() {
   if (this.number_of_cells <= this.number_of_bombs) { alert('more bombs than cells not allowed!'); return false; } // Validation w.r.t number of cells for bombs
   var that = this; // Assign into new variable to avoid conflict between global context and functional context
   this.moveIt(true);
-  this.map.innerHTML = ''
+  this.map.innerHTML = '';
   var grid_data = this.bomb_array();
 
-  function getIndex (x, y) {
+  let getIndex= (x, y) => {
     if (x > that.cols || x <= 0) return -1;
     if (y > that.cols || y <= 0) return -1;
     return that.cols * (y - 1 ) + x - 1;
@@ -55,11 +55,11 @@ init() {
     var y = Math.ceil((i + 1) / that.cols);
     var neighbors_cords = [[x, y - 1], [x, y + 1], [x - 1, y - 1], [x - 1, y], [x - 1, y + 1], [x + 1, y - 1], [x + 1, y], [x + 1, y + 1]];
     if(!isBomb) {
-      var neighbors = neighbors_cords.map(function (xy) { return grid_data[getIndex(xy[0], xy[1])]; });
-      mine.mine_count = neighbors.filter(function (neighbor_bomb) { return neighbor_bomb; }).length;
+      var neighbors = neighbors_cords.map((xy) =>{ return grid_data[getIndex(xy[0], xy[1])]; });
+      mine.mine_count = neighbors.filter((neighbor_bomb) =>{ return neighbor_bomb; }).length;
     }
     mine.classList.add('x' + x, 'y' + y);
-    mine.neighbors = neighbors_cords.map(function (xy) { return `.x${xy[0]}.y${xy[1]}`; });
+    mine.neighbors = neighbors_cords.map((xy) =>{ return `.x${xy[0]}.y${xy[1]}`; });
 
     cell.appendChild(mine);
     row.appendChild(cell);
@@ -74,7 +74,7 @@ init() {
   this.bindEvents();
   this.updateBombsLeft();
 }
-
+// bind event and context click to the cell
 bindEvents() {
   var that = this;
   var cells = document.getElementsByClassName('cell');
@@ -131,7 +131,7 @@ bindEvents() {
     }
   });
 }
-
+//logic to capture the result of the game using cell unmasking. 
 game() {
   if (this.result) return;
   var cells = document.getElementsByClassName('cell');
@@ -153,6 +153,7 @@ game() {
   }
 }
 
+//restart the complete game and reset all the values to intials.
 restart(usetwemoji) {
   clearInterval(this.timer);
   this.result = false;
@@ -168,7 +169,7 @@ resetMetadata () {
   document.querySelector('.default-emoji').innerHTML = this.usetwemoji ? twemoji.parse('😀') : '😀';
   document.querySelector('.js-settings').innerHTML = this.usetwemoji ? twemoji.parse('🔧') : '🔧';
 }
-
+//function to start the game timer for tracking
 startTimer() {
   if (this.timer) return;
   this.startTime = new Date();
@@ -177,6 +178,7 @@ startTimer() {
   }, 100);
 }
 
+//create cell and assign necessary properties and events
 mine(bomb) {
   var that = this;
   var base = document.createElement('button');
@@ -198,7 +200,7 @@ mine(bomb) {
   }
   return base;
 }
-
+//Logic to reveal multiple cells
 revealNeighbors(mine) {
   var neighbors = document.querySelectorAll(mine.neighbors);
   for(var i = 0; i < neighbors.length; i++) {

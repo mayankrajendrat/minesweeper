@@ -221,6 +221,7 @@
     function restart() {
       clearInterval(game.timer)
       game = new mineSweeper(cols.value, rows.value, bombs.value, emojiset, true)
+      game.updateFeedback('Game restarted');
       return false
     }
   </script>
